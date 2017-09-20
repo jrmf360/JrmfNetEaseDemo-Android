@@ -73,7 +73,7 @@
         <!-- 金融魔方SDK 渠道id以及红包名称-->
         <meta-data
             android:name="JRMF_PARTNER_ID"
-			android:value="closedbate"/>
+			android:value="45c6af3c98409b18a84451215d0bdd6e"/>
         <meta-data
             android:name="JRMF_PARTNER_NAME"
             android:value="云信红包"/>

@@ -7,14 +7,26 @@ android {
     defaultConfig {
         minSdkVersion 12
         targetSdkVersion 20
-        versionCode 20170721
-        versionName "2.1.0"
-
+        versionCode 20170914
+        versionName "2.1.1"
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res-b', 'src/main/res-w']
+            assets.srcDirs = ['assets']
         }
     }
 
@@ -28,4 +40,30 @@ dependencies {
     compile 'com.android.support:support-v4:21.0.3'
 }
 
+
+task clearJar(type: Delete) {
+    delete 'build/libs/'
+}
+
+task makeNeteaseJar(type: org.gradle.api.tasks.bundling.Jar, dependsOn: "build") {
+    //指定生成的jar名
+    baseName 'JrmfNeteaseLib'
+    //从哪里打包class文件
+    from('build/intermediates/classes/debug/com/jrmf360/neteaselib')
+    //打包到jar后的目录结构
+    into('com/jrmf360/neteaselib')
+    //去掉不需要打包的目录和文件
+    exclude('test/', 'BuildConfig.class', 'R.class')
+    //去掉R$开头的文件
+    exclude { it.name.startsWith('R$'); }
+}
+
+makeNeteaseJar.dependsOn(clearJar, build)
+
+
+task makeNeteaseProguardJar(type: proguard.gradle.ProGuardTask, dependsOn: "build") {
+    injars 'build/libs/JrmfNeteaseLib.jar'//项目编译但未混淆的jar  
+    outjars 'libs/JrmfNetease-2.1.1.jar'//混淆后的jar路径  
+    configuration 'proguard-rules.pro'// 混淆配置文件  
+}
 
