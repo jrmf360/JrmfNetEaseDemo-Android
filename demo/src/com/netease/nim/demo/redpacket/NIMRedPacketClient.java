@@ -109,6 +109,7 @@ public class NIMRedPacketClient {
             public void onResult(int code, String result, Throwable exception) {
                 if (code == ResponseCode.RES_SUCCESS) {
                     thirdToken = result;
+                    com.jrmf360.neteaselib.base.utils.LogUtil.e("获得token成功==>"+thirdToken);
                 } else if (code == ResponseCode.RES_RP_INVALID) {
                     // 红包功能不可用
                     Toast.makeText(DemoCache.getContext(), "红包功能不可用", Toast.LENGTH_SHORT).show();
@@ -145,6 +146,7 @@ public class NIMRedPacketClient {
         JrmfClient.init(context);
         JrmfClient.isDebug(true);
         com.jrmf360.neteaselib.base.utils.LogUtil.init(true);
+        JrmfClient.setTintStatusBar(true);
         // 设置微信appid，如果不使用微信支付可以不调用，此处需要开发者到微信支付申请appid
         // JrmfClient.setWxAppid("xxxxxx");
     }

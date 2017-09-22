@@ -11,8 +11,6 @@ public interface ConstantUtil {
 
 	// String JRMF_PARTNER_URL = "api/v2/redEnvelope/"; // 原生改版
 
-//	String	JRMF_PARTNER_URL			= "api/v4/redEnvelope/";												// 乌行H5
-
 	String JRMF_PARTNER_URL = "app/v2/redEnvelope/yunxin/";                                        // 网易云信版
 
 
