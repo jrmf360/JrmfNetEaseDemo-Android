@@ -112,7 +112,8 @@
 -keep class com.jrmf360.neteaselib.base.display.**{*;}
 -keep class com.jrmf360.neteaselib.base.http.**{*;}
 
--keepclassmembers class com.jrmf360.neteaselib.base.model.**{*;}
+#-keepclassmembers class com.jrmf360.neteaselib.base.model.**{*;}
+-keep class com.jrmf360.neteaselib.base.model.BaseModel{*;}
 -keepclassmembers class * extends com.jrmf360.neteaselib.base.model.BaseModel{*;}
 
 -keep class com.jrmf360.neteaselib.base.utils.NetworkCacheUtil{*;}
@@ -196,6 +197,7 @@
 #-keepclassmembers class com.jrmf360.neteaselib.wallet.http.model.AccountModel{*;}
 -keepclassmembers class com.jrmf360.neteaselib.wallet.http.model.SendRpItemModel{*;}
 -keepclassmembers class com.jrmf360.neteaselib.wallet.http.model.RpItemModel{*;}
+-keepclassmembers class com.jrmf360.neteaselib.wallet.http.model.AccountModel{*;}
 -keep class com.jrmf360.neteaselib.wallet.http.model.TradeItemDetail{*;}
 -keep class com.jrmf360.neteaselib.wallet.http.model.RpInfoModel$* {*;}
 

@@ -50,6 +50,7 @@
     <string name="jrmf_w_trade_out">支出</string>
     <string name="jrmf_w_back_type">退款方式</string>
     <string name="jrmf_w_trade_type">交易方式</string>
+    <string name="jrmf_w_deposit_bank">提现银行</string>
     <string name="jrmf_w_trade_detail">订单详情</string>
     <string name="jrmf_w_update_pwd">修改支付密码</string>
     <string name="jrmf_w_type">类型</string>

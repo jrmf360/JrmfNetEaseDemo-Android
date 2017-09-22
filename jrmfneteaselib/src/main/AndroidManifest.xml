@@ -33,8 +33,6 @@
         <activity android:name="com.jrmf360.neteaselib.rp.ui.AcfActivity"/>
         <activity android:name="com.jrmf360.neteaselib.rp.ui.AcsActivity"/>
         <activity android:name="com.jrmf360.neteaselib.rp.ui.BankCardListActivity"/>
-        <activity android:name="com.jrmf360.neteaselib.rp.ui.TradeHistoryActivity"/>
-        <activity android:name="com.jrmf360.neteaselib.rp.ui.TradeDetailActivity"/>
 
         <activity android:name="com.jrmf360.neteaselib.rp.ui.TransAccountActivity"/>
         <activity android:name="com.jrmf360.neteaselib.rp.ui.TransSuccActivity"/>
