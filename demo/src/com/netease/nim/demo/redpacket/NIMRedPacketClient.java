@@ -144,7 +144,7 @@ public class NIMRedPacketClient {
     private static void initJrmfSDK(Context context) {
         //初始化红包sdk
         JrmfClient.init(context);
-        JrmfClient.isDebug(true);
+//        JrmfClient.isDebug(true);
         com.jrmf360.neteaselib.base.utils.LogUtil.init(true);
         JrmfClient.setTintStatusBar(true);
         // 设置微信appid，如果不使用微信支付可以不调用，此处需要开发者到微信支付申请appid
