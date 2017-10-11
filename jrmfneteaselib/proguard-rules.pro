@@ -115,6 +115,9 @@
 #-keepclassmembers class com.jrmf360.neteaselib.base.model.**{*;}
 -keep class com.jrmf360.neteaselib.base.model.BaseModel{*;}
 -keepclassmembers class * extends com.jrmf360.neteaselib.base.model.BaseModel{*;}
+-keepclassmembers class com.jrmf360.neteaselib.base.manager.GlobalExceptionManager{
+    <methods>;
+}
 
 -keep class com.jrmf360.neteaselib.base.utils.NetworkCacheUtil{*;}
 -keep class com.jrmf360.neteaselib.base.utils.NetworkCacheUtil$* {*;}

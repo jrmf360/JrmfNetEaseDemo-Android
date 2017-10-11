@@ -2,12 +2,14 @@ package com.netease.nim.demo.redpacket;
 
 import android.app.Activity;
 import android.content.Context;
-import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.jrmf360.neteaselib.JrmfClient;
 import com.jrmf360.neteaselib.base.http.OkHttpModelCallBack;
+import com.jrmf360.neteaselib.base.http.OkHttpWork;
 import com.jrmf360.neteaselib.base.model.BaseModel;
+import com.jrmf360.neteaselib.base.utils.SPManager;
+import com.jrmf360.neteaselib.base.utils.ToastUtil;
 import com.jrmf360.neteaselib.rp.JrmfRpClient;
 import com.jrmf360.neteaselib.rp.utils.callback.GrabRpCallBack;
 import com.jrmf360.neteaselib.wallet.JrmfWalletClient;
@@ -27,7 +29,12 @@ import com.netease.nimlib.sdk.team.model.Team;
 import com.netease.nimlib.sdk.uinfo.UserServiceObserve;
 import com.netease.nimlib.sdk.uinfo.model.NimUserInfo;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 金融魔方红包SDK接口封装，开发者依赖云信SDK 接入金融魔方需要逻辑流程如下：
@@ -76,31 +83,31 @@ public class NIMRedPacketClient {
      * 获得thirdToken：供demo使用，如果您正式开发请从您的服务端获得token
      * @return
      */
-//    public static String getThirdToken() {
-//        String partnerId = SPManager.getInstance().getString(JrmfClient.getAppContext(), "partner_id", "");
-//        Map<String, Object> requestParamsMap = new HashMap<>();
+    public static String getThirdToken() {
+        String partnerId = SPManager.getInstance().getString(JrmfClient.getAppContext(), "partner_id", "");
+        Map<String, Object> requestParamsMap = new HashMap<>();
 //        requestParamsMap.put("partnerId", partnerId);
-//        requestParamsMap.put("custUid", DemoCache.getAccount());
-//        OkHttpWork.getInstance().post(JrmfClient.getBaseUrl() + "api/v1/closedbate/getBateThirdToken.shtml", requestParamsMap, new OkHttpModelCallBack<String>() {
-//            @Override
-//            public void onSuccess(String result) {
-//                JSONObject jsonObj = null;
-//                try {
-//                    jsonObj = new JSONObject(result);
-//                    thirdToken = jsonObj.optString("thirdToken");
-//                } catch (JSONException e) {
-//                    ToastUtil.showToast(JrmfClient.getAppContext(),"获得Token失败");
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onFail(String s) {
-//                ToastUtil.showToast(JrmfClient.getAppContext(), s);
-//            }
-//        });
-//        return thirdToken;
-//    }
+        requestParamsMap.put("custUid", DemoCache.getAccount());
+        OkHttpWork.getInstance().post(JrmfClient.getBaseUrl() + "api/v1/closedbate/getBateThirdToken.shtml", requestParamsMap, new OkHttpModelCallBack<String>() {
+            @Override
+            public void onSuccess(String result) {
+                JSONObject jsonObj = null;
+                try {
+                    jsonObj = new JSONObject(result);
+                    thirdToken = jsonObj.optString("thirdToken");
+                } catch (JSONException e) {
+                    ToastUtil.showToast(JrmfClient.getAppContext(),"获得Token失败");
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFail(String s) {
+                ToastUtil.showToast(JrmfClient.getAppContext(), s);
+            }
+        });
+        return thirdToken;
+    }
 
 
     private static void getRpAuthToken() {
@@ -144,7 +151,7 @@ public class NIMRedPacketClient {
     private static void initJrmfSDK(Context context) {
         //初始化红包sdk
         JrmfClient.init(context);
-//        JrmfClient.isDebug(true);
+        JrmfClient.isDebug(true);
         com.jrmf360.neteaselib.base.utils.LogUtil.init(true);
         JrmfClient.setTintStatusBar(true);
         // 设置微信appid，如果不使用微信支付可以不调用，此处需要开发者到微信支付申请appid
@@ -164,12 +171,12 @@ public class NIMRedPacketClient {
      *
      * @return thirdToken
      */
-    public static String getThirdToken() {
-        if (TextUtils.isEmpty(thirdToken)) {
-            getRpAuthToken();
-        }
-        return thirdToken;
-    }
+//    public static String getThirdToken() {
+//        if (TextUtils.isEmpty(thirdToken)) {
+//            getRpAuthToken();
+//        }
+//        return thirdToken;
+//    }
 
     /**
      * 跳转至我的钱包界面
